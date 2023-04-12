@@ -1,0 +1,11 @@
+# https://registry.suse.com/
+FROM registry.suse.com/bci/bci-base:latest
+
+ENV ZYPPERCMD="zypper --non-interactive"
+
+RUN curl -O https://developer.download.nvidia.com/compute/cuda/11.7.1/local_installers/cuda-repo-sles15-11-7-local-11.7.1_515.65.01-1.x86_64.rpm
+
+RUN rpm -i cuda-repo-sles15-11-7-local-11.7.1_515.65.01-1.x86_64.rpm
+RUN $ZYPPERCMD --gpg-auto-import-keys refresh
+RUN $ZYPPERCMD install -y glibc-32bit
+RUN $ZYPPERCMD install -y cuda
