@@ -1,0 +1,8 @@
+version: '3.1'
+
+services:
+
+  bci-sshd:
+    image: bci-sshd
+    ports:
+      - 1122:22

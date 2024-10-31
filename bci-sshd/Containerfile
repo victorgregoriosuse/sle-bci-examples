@@ -1,0 +1,19 @@
+FROM registry.suse.com/bci/bci-base:latest
+ENV ZYPPERCMD="zypper --non-interactive"
+
+ARG PASSWD
+ENV PASSWD=${PASSWD}
+
+# passwd
+RUN if [ -z "${PASSWD}" ]; then echo "PASSWD environment variable is not set" >&2; exit 1; fi
+RUN echo "root:${PASSWD}" | chpasswd
+
+# ssh and host keys
+RUN $ZYPPERCMD install openssh
+RUN /usr/bin/ssh-keygen -A
+RUN mkdir /var/run/sshd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]
