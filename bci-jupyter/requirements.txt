@@ -1,6 +1,0 @@
-jupyterlab
-kfp
-torch
-torchvision
-scikit-learn
-kafka-python

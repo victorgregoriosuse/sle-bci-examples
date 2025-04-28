@@ -1,0 +1,11 @@
+services:
+
+  jupyterhub:
+    image: bci-jupyterhub
+    ports:
+      - 8000:8000
+    volumes:
+      - ./notebooks:/home/jupyter
+    environment:
+      APP_UID: ${APP_UID}
+      APP_PASS: ${APP_PASS}

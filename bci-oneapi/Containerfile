@@ -16,4 +16,4 @@ RUN $ZYPPERCMD install awk
 
 # install oneAPI
 RUN $ZYPPERCMD install intel-basekit
-RUN $ZYPPERCMD clean --all
+RUN $ZYPPERCMD clean -a

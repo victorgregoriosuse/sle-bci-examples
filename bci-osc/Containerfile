@@ -1,0 +1,15 @@
+FROM registry.suse.com/bci/bci-base:latest
+ENV ZYPPERCMD="zypper --non-interactive"
+
+# osc
+RUN $ZYPPERCMD install git osc build rpm-build quilt
+RUN $ZYPPERCMD clean -a
+
+# working path
+WORKDIR /app
+
+# set bash as the default shell when container runs
+SHELL ["/bin/bash", "-c"]
+
+# keep the container running with an interactive bash shell
+CMD ["/bin/bash"]
