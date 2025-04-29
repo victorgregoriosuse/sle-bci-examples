@@ -191,6 +191,7 @@ c = get_config()  #noqa
 #          Sets protocol, ip, base_url
 #  Default: 'http://:8000'
 # c.JupyterHub.bind_url = 'http://:8000'
+c.JupyterHub.bind_url = 'http://:8888'
 
 ## Whether to shutdown the proxy when the Hub shuts down.
 #  
@@ -1069,6 +1070,7 @@ c = get_config()  #noqa
 #      set `allow_all = True` if you have no other allow configuration.
 #  Default: False
 # c.Authenticator.allow_all = False
+c.Authenticator.allow_all = True
 
 ## Allow existing users to login.
 #  
@@ -1679,6 +1681,7 @@ c = get_config()  #noqa
 #  documentation for your spawner to verify!
 #  Default: ['jupyterhub-singleuser']
 # c.Spawner.cmd = ['jupyterhub-singleuser']
+c.Spawner.cmd = ['/app/jupyterhub/bin/jupyterhub-singleuser']
 
 ## Maximum number of consecutive failures to allow before shutting down
 #  JupyterHub.
@@ -2217,6 +2220,7 @@ c = get_config()  #noqa
 ## 
 #  See also: Spawner.ip
 # c.LocalProcessSpawner.ip = '127.0.0.1'
+c.LocalProcessSpawner.ip = '0.0.0.0'
 
 ## Seconds to wait for process to halt after SIGKILL before giving up.
 #  
@@ -2390,6 +2394,7 @@ c = get_config()  #noqa
 ## 
 #  See also: Spawner.default_url
 # c.SimpleLocalProcessSpawner.default_url = ''
+c.SimpleLocalProcessSpawner.default_url = '/lab'
 
 ## 
 #  See also: Spawner.disable_user_config

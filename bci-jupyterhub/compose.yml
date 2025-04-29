@@ -3,9 +3,8 @@ services:
   jupyterhub:
     image: bci-jupyterhub
     ports:
-      - 8000:8000
-    volumes:
-      - ./notebooks:/home/jupyter
+      - 8888:8888
     environment:
+      APP_UNAME: ${APP_UNAME}
       APP_UID: ${APP_UID}
       APP_PASS: ${APP_PASS}

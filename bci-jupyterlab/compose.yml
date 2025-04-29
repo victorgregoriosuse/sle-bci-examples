@@ -4,7 +4,6 @@ services:
     image: bci-jupyterlab
     ports:
       - 8888:8888
-    volumes:
-      - ./notebooks:/home/jupyter
     environment:
+      APP_UNAME: ${APP_UNAME}
       APP_UID: ${APP_UID}

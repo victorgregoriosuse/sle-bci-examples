@@ -1,27 +1,47 @@
-# SLE BCI container with JupyterLab
+# SLE BCI container with JupyterHub
 
-- https://registry.suse.com/
-- https://jupyter.org/
+## Requirements
 
-# Requirements
+- Storage: image is ~787 MB
 
-- Storage: Resulting image is ~410 MB
+## Docker Deployment
 
-# Build
-
-```
+### 1. Build Image
+```bash
 docker buildx build -t bci-jupyterhub -f Dockerfile .
 ```
 
-# Run
+### 2. Configure & Run
 
+The `compose.yml` requires environment variables to be set beforehand
+
+#### **Variables**
+
+* `APP_UNAME`:  the conainer username that runs jupyterhub (default = jupyter)
+* `APP_UID`:    the uid for the container username (default = 1000)
+* `APP_PASS`:   the password for the container username (default = CHANGEME)
+
+#### **Example Run**
+```bash
+export APP_PASS="YOUR_SECURE_PASSWORD_HERE"
+export APP_UNAME=$USER
+export APP_UID=$(id -u)
+
+docker compose up -d
 ```
-# APP_UID sets the uid the jupyter instance inside the container; defaults to 1000 if not set
-# This will also mount ./notebooks as the $HOME of the jupyter instance user
+Access via port mapped in `compose.yml` (e.g., `http://localhost:8888`)
 
-APP_UID=$(id -u) APP_PASS=<SET PASSWORD> docker compose up -d
-```
+# Kubernetes / Rancher Deployment (Helm)
 
-# Notes
+See [bci-jupyterhub-helm/README.md](./bci-jupyterhub-helm/README.md)
+
+# Reference
 
 - https://denibertovic.com/posts/handling-permissions-with-docker-volumes/
+- https://registry.suse.com/
+- https://jupyter.org/
+
+
+
+
+
