@@ -1,8 +1,23 @@
 # SLE BCI container with JupyterHub
 
-## Requirements
+## Container Details
 
-- Storage: image is ~787 MB
+* Container image is ~787 MB
+* JupyterHub and JupyterLab services run as `APP_USER`
+* JupyterHub is launched with local user authentication
+    * Username: `APP_UNAME`
+    * UID: `APP_UID`
+    * Password: `APP_PASS`
+* JupyterHub Ports
+    * Docker: `8888/tcp` as defined in `compose.yml`
+    * Helm: `30000-32767/tcp` as defined in `bci-jupyterhub-helm/values.yaml`
+* JupterHub launches JupyterLab after authentication
+* JupyterLab environment
+    * `entrypoint.sh` installs Python virtual environments and configures each virtual environment as an ipykernel
+    * Python 3.6: `~/venv/3.6` 
+    * Python 3.11: `~/venv/3.11`
+    * <img src="./docs/jupyterlab-environment.png" alt="BCI JupyterLab Environment" height="300">
+
 
 ## Docker Deployment
 

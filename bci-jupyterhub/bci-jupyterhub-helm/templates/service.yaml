@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "bci-jupyterhub-helm.fullname" . }}
+  name: {{ include "bci-jupyterhub.fullname" . }}
   labels:
-    {{- include "bci-jupyterhub-helm.labels" . | nindent 4 }}
+    {{- include "bci-jupyterhub.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -15,4 +15,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "bci-jupyterhub-helm.selectorLabels" . | nindent 4 }}
+    {{- include "bci-jupyterhub.selectorLabels" . | nindent 4 }}

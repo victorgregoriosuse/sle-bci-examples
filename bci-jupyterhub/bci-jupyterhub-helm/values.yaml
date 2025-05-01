@@ -1,4 +1,4 @@
-# Default values for bci-jupyterhub-helm.
+# Default values for bci-jupyterhub.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -56,7 +56,8 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 8888
   targetPort: 8888
-  nodePort: 32000
+  # uncomment below to force a nodeport instead of the default 30000-32767/tcp
+  # nodePort: 32000
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:

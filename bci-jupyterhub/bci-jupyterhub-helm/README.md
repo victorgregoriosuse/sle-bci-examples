@@ -6,7 +6,7 @@ Follow these steps to configure the necessary password secret and install the He
 
 * `kubectl` configured for your target Kubernetes cluster.
 * `helm` v3+ installed.
-* You are in the directory containing the Helm chart source (e.g., `bci-jupyterhub-helm/`).
+* You are in the directory containing the Helm chart source (e.g., `bci-jupyterhub/`).
 * Remote access to https://hub.docker.com/r/victorgregoriosuse/bci-jupyterhub
 
 ## Steps

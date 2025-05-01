@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "bci-jupyterhub-helm.fullname" . }}
+  name: {{ include "bci-jupyterhub.fullname" . }}
   labels:
-    {{- include "bci-jupyterhub-helm.labels" . | nindent 4 }}
+    {{- include "bci-jupyterhub.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "bci-jupyterhub-helm.fullname" . }}
+    name: {{ include "bci-jupyterhub.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
